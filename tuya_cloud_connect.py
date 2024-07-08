@@ -68,7 +68,7 @@ class TuyaDeviceManager:
 
 if __name__ == "__main__":
     # Initialize the manager with your credentials
-    irrig_controller = TuyaDeviceManager(
+    smart_soil = TuyaDeviceManager(
         api_region=API_REGION,
         api_key=API_KEY,
         api_secret=API_SECRET,
