@@ -72,7 +72,7 @@ if __name__ == "__main__":
         api_region=API_REGION,
         api_key=API_KEY,
         api_secret=API_SECRET,
-        api_device_id=DEVICES['Irrigation controller']
+        api_device_id=DEVICES['Smart soil sensor']
     )
 
     # Display properties of the device
