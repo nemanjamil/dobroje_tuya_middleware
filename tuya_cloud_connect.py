@@ -68,13 +68,13 @@ class TuyaDeviceManager:
 
 if __name__ == "__main__":
     # Initialize the manager with your credentials
-    smart_soil = TuyaDeviceManager(
-        api_region="eu",
-        api_key="x5xq5g4qht5pfvcakdvr",
-        api_secret="34f89f40acdf4de6ae23e63eef181a16",
-        api_device_id=DEVICES['Smart soil sensor']
+    irrig_controller = TuyaDeviceManager(
+        api_region=API_REGION,
+        api_key=API_KEY,
+        api_secret=API_SECRET,
+        api_device_id=DEVICES['Irrigation controller']
     )
-    
+
     # Display properties of the device
     smart_soil.get_device_logs()
 
@@ -83,5 +83,3 @@ if __name__ == "__main__":
 
     # Get  device properties
     smart_soil.get_properties()
-
-
