@@ -1,17 +1,5 @@
 import tinytuya
 
-# Project credentials
-API_REGION = "eu"
-API_KEY="x5xq5g4qht5pfvcakdvr"
-API_SECRET="34f89f40acdf4de6ae23e63eef181a16"
-
-# Device credentials
-DEVICES = {
-    "Irrigation controller": "vdevo172044590691636",
-    "Luminance sensor": "vdevo172044570814122",
-    "Smart soil sensor": "vdevo172044411129779"
-}
-
 class TuyaDeviceManager:
     def __init__(self, api_region, api_key, api_secret, api_device_id):
         self.cloud = tinytuya.Cloud(
@@ -21,6 +9,24 @@ class TuyaDeviceManager:
             apiDeviceID=api_device_id
         )
         self.device_id = api_device_id
+
+    def get_functions(self):
+        result = self.cloud.getfunctions(self.device_id)
+        functions = result['result']['functions']
+        print("Functions of device:")
+        for func in functions:
+            print(f"  Code: {func['code']}")
+            print(f"  Description: {func['desc']}")
+            print(f"  Name: {func['name']}")
+            print(f"  Type: {func['type']}")
+            print(f"  Values: {func['values']}")
+            print("")
+
+    def data_receive(self):
+        self.cloud.receive()
+
+    def send_command(self, commands):
+        result = self.cloud.sendcommand(self.device_id, commands)
 
     def get_devices_list(self):
         devices = self.cloud.getdevices()
@@ -51,9 +57,7 @@ class TuyaDeviceManager:
 
     def get_status(self):
         result = self.cloud.getstatus(self.device_id)
-        print("Status of device:")
-        for status in result['result']:
-            print(f"  {status['code']}: {status['value']}")
+        return result
 
     def get_device_logs(self, start=None, end=None):
         result = self.cloud.getdevicelog(self.device_id, start=start, end=end)
@@ -65,21 +69,3 @@ class TuyaDeviceManager:
             if 'value' in log:
                 print(f"  Value: {log['value']}")
             print("")
-
-if __name__ == "__main__":
-    # Initialize the manager with your credentials
-    smart_soil = TuyaDeviceManager(
-        api_region=API_REGION,
-        api_key=API_KEY,
-        api_secret=API_SECRET,
-        api_device_id=DEVICES['Smart soil sensor']
-    )
-
-    # Display properties of the device
-    smart_soil.get_device_logs()
-
-    # Get device current status
-    smart_soil.get_status()
-
-    # Get  device properties
-    smart_soil.get_properties()
