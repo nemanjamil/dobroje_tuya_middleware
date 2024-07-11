@@ -1,0 +1,199 @@
+<mxfile host="app.diagrams.net" modified="2024-07-11T19:47:01.843Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0" etag="9kA81Fd5MmVNlXtv6fnQ" version="24.6.5" type="device">
+  <diagram name="Page-1" id="CHfxR0bi9QZZCg0VFg5A">
+    <mxGraphModel dx="1806" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="km5XLpecg_hvMCBVTTeM-17" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="-130" y="30" width="1030" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-18" value="Solution 1 using APIs (Scalable to 100 users)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="240" y="60" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="km5XLpecg_hvMCBVTTeM-19" target="km5XLpecg_hvMCBVTTeM-20">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="205" y="195" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-29" value="1- Request data or send command&lt;div&gt;for a specific device&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-28">
+          <mxGeometry x="0.2031" relative="1" as="geometry">
+            <mxPoint x="-21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-19" value="&lt;span style=&quot;text-align: justify;&quot;&gt;Web Server&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="120" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="km5XLpecg_hvMCBVTTeM-20" target="km5XLpecg_hvMCBVTTeM-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-34" value="2- Use the APIs for connecting to a&amp;nbsp;&lt;div&gt;specific device&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-32">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-20" value="&lt;div style=&quot;text-align: justify;&quot;&gt;Python Script&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="300" y="120" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-21" value="Tuya Cloud" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="660" y="120" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.011;exitY=0.616;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="641.6500000000001" y="230.0000000000001" as="sourcePoint" />
+            <mxPoint x="450" y="232.60000000000002" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="660" y="230" />
+              <mxPoint x="660" y="233" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-38" value="3- Tuya cloud response&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-37">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint x="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.001;exitY=0.68;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300.1500000000001" y="232.00000000000023" as="sourcePoint" />
+            <mxPoint x="90" y="230" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="300" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-40" value="4- Response the request status" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-39">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-41" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="-130" y="400" width="1030" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-42" value="Solution 2 using APIs (Scalable to 5000 users)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="195" y="430" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-45" value="&lt;span style=&quot;text-align: justify;&quot;&gt;Web Server&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="490" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="km5XLpecg_hvMCBVTTeM-48" target="km5XLpecg_hvMCBVTTeM-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-47" value="2- Polling on the APIs to check for&amp;nbsp;&lt;div&gt;any new data.&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-46">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-48" value="&lt;div style=&quot;text-align: justify;&quot;&gt;Python Script&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="300" y="490" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-49" value="Tuya Cloud" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="640" y="490" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.011;exitY=0.616;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="km5XLpecg_hvMCBVTTeM-49" target="km5XLpecg_hvMCBVTTeM-48">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="630" y="585" as="sourcePoint" />
+            <mxPoint x="640" y="590" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="642" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-51" value="3- Tuya cloud response&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-50">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.001;exitY=0.68;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="299.9800000000001" y="562.0000000000002" as="sourcePoint" />
+            <mxPoint x="89.83" y="560" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="299.83" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-53" value="1- Get the devices need to be&amp;nbsp;&lt;div&gt;monitored&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-52">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.001;exitY=0.68;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="299.9800000000001" y="602.0000000000002" as="sourcePoint" />
+            <mxPoint x="89.83" y="600" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="299.83" y="600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-55" value="4- Send the changes to the database&amp;nbsp;&lt;div&gt;through APIs.&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-54">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-56" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="-130" y="770" width="1030" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-57" value="Solution 3 using MQTT 20k+" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="280" y="800" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-58" value="&lt;span style=&quot;text-align: justify;&quot;&gt;Web Server&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-60" y="860" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="km5XLpecg_hvMCBVTTeM-61" target="km5XLpecg_hvMCBVTTeM-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-60" value="2- Polling or the APIs to check for&amp;nbsp;&lt;div&gt;any new data.&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-59">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-61" value="&lt;div style=&quot;text-align: justify;&quot;&gt;Python Script&lt;/div&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="300" y="860" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-62" value="Tuya Cloud" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="640" y="860" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.011;exitY=0.616;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="641.6500000000001" y="959.9999999999999" as="sourcePoint" />
+            <mxPoint x="450" y="962.6" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="642" y="962.6" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-64" value="3- Tuya cloud response&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-63">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.001;exitY=0.68;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="299.9800000000001" y="972.0000000000002" as="sourcePoint" />
+            <mxPoint x="89.83" y="970" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="299.83" y="970" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-68" value="4- Send the changes to the database&amp;nbsp;&lt;div&gt;through MQTT connection.&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-67">
+          <mxGeometry x="-0.0391" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-69" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="930" as="sourcePoint" />
+            <mxPoint x="300" y="930" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="km5XLpecg_hvMCBVTTeM-70" value="1- Server opens connection with&amp;nbsp;&lt;div&gt;the script.&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="km5XLpecg_hvMCBVTTeM-69">
+          <mxGeometry x="0.2031" relative="1" as="geometry">
+            <mxPoint x="-21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

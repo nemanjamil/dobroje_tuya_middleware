@@ -1,10 +1,12 @@
 import os
 import sys
-from flask import Flask, request, jsonify
-from dotenv import load_dotenv
 import threading
 import time
 from datetime import datetime, timedelta
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+from dotenv import load_dotenv
+from typing import Dict, Any
 
 # Add the project directory to the system path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -14,13 +16,26 @@ from config.settings import *
 from src.tuya_cloud_connect import TuyaDeviceManager
 from src.database import MongoDBClient
 
-app = Flask(__name__)
+app = FastAPI()
 load_dotenv()
 
 # Retrieve API credentials from environment variables
 API_REGION = os.getenv('API_REGION')
 API_KEY = os.getenv('API_KEY')
 API_SECRET = os.getenv('API_SECRET')
+
+class SensorDataRequest(BaseModel):
+    API_REGION: str
+    API_KEY: str
+    API_SECRET: str
+    DEVICE_ID: str
+
+class CommandRequest(BaseModel):
+    API_REGION: str
+    API_KEY: str
+    API_SECRET: str
+    DEVICE_ID: str
+    COMMAND: Dict[str, Any]
 
 def is_data_changed(db_client, device_id, new_status):
     try:
@@ -44,58 +59,48 @@ def database_update(db_client, device):
         except Exception as e:
             print(f"Error in database update: {e}")
 
-@app.route('/get_sensor_data', methods=['POST'])
-def get_sensor_data():
+@app.post("/get_sensor_data")
+async def get_sensor_data(request: SensorDataRequest):
     try:
-        data = request.json
-        api_region = data.get('API_REGION')
-        api_key = data.get('API_KEY')
-        api_secret = data.get('API_SECRET')
-        device_id = data.get('DEVICE_ID')
-
-        if not all([api_region, api_key, api_secret, device_id]):
-            return jsonify({"error": "Missing required parameters"}), 400
+        api_region = request.API_REGION
+        api_key = request.API_KEY
+        api_secret = request.API_SECRET
+        device_id = request.DEVICE_ID
 
         # Initialize TuyaDeviceManager for each device
         device = TuyaDeviceManager(api_region, api_key, api_secret, device_id, '154.61.204.255')
         if device.get_properties()['success']:
             device_status = device.get_status()
             if device_status:
-                return jsonify(device.get_status()), 200
+                return device_status
             else:
-                return jsonify({"error": "Can't get the sensors data."}), 404
+                raise HTTPException(status_code=404, detail="Can't get the sensors data.")
         else:
-            return jsonify({"error": "Can't connect to the device."}), 500
-
+            raise HTTPException(status_code=500, detail="Can't connect to the device.")
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        raise HTTPException(status_code=500, detail=str(e))
 
-@app.route('/send_command', methods=['POST'])
-def send_command():
+@app.post("/send_command")
+async def send_command(request: CommandRequest):
     try:
-        data = request.json
-        api_region = data.get('API_REGION')
-        api_key = data.get('API_KEY')
-        api_secret = data.get('API_SECRET')
-        device_id = data.get('DEVICE_ID')
-        command = data.get('COMMAND')
+        api_region = request.API_REGION
+        api_key = request.API_KEY
+        api_secret = request.API_SECRET
+        device_id = request.DEVICE_ID
+        command = request.COMMAND
 
-        if not all([api_region, api_key, api_secret, device_id]):
-            return jsonify({"error": "Missing required parameters"}), 400
-        
         # Initialize TuyaDeviceManager for each device
         device = TuyaDeviceManager(api_region, api_key, api_secret, device_id, '154.61.204.255')
         if device.get_properties()['success']:
             if device.send_command(command)['success']:
-                return jsonify({"message": "Command has been sent successfully."}), 200
+                return {"message": "Command has been sent successfully."}
             else:
-                return jsonify({"error": "Can't send the command to the device.'."}), 404
+                raise HTTPException(status_code=404, detail="Can't send the command to the device.")
         else:
-            return jsonify({"error": "Can't connect to the device."}), 500
-
+            raise HTTPException(status_code=500, detail="Can't connect to the device.")
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    app.run()
-
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
