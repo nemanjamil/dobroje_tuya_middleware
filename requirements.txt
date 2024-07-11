@@ -6,3 +6,4 @@ python-dotenv==1.0.1
 pytz==2024.1
 Requests==2.32.3
 tinytuya==1.15.0
+werkzeug==0.16.1
