@@ -91,7 +91,7 @@ def auto_irrigation(db_client, irrigation_controller):
                 # Get the latest soil sensor data from the database
                 soil_sensor = db_client.get_latest_results('Smart soil sensor')
 
-                # Turn on irrigation if soil temperature is high
+                # Turn on irrigation if soil temperature is high (Just for testing)
                 if soil_sensor['temp_current'] > 25 and valve_state == False:
                     print("Soil temperature is high. Turning on irrigation")
                     commands = {'commands': [{'code': 'switch', 'value': True}]}
@@ -116,11 +116,16 @@ if __name__ == "__main__":
     try:
         # Initialize TuyaDeviceManager for each device
         lumin_sensor = TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Luminance sensor'])
-        soil_sensor = TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Smart soil sensor'])
+        soil_sensor = TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Smart soil sensor'], '154.61.204.255')
         irrigation_controller = TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Irrigation controller'])
 
         # Initialize MongoDB client
         db_client = MongoDBClient()
+
+        print(lumin_sensor.get_status())
+        print(soil_sensor.get_status())
+        print(irrigation_controller.get_status())
+        
 
         # Create threads for concurrent execution of database update and auto irrigation
         insert_thread = threading.Thread(target=database_update, args=(db_client, lumin_sensor, soil_sensor))

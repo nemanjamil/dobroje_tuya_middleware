@@ -1,3 +1,7 @@
 pymongo
 python-dotenv
 tinytuya
+ip2geotools
+geopy
+bs4
+pytz
