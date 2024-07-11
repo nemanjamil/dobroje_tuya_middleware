@@ -1,7 +1,9 @@
-pymongo
-python-dotenv
-tinytuya
-ip2geotools
-geopy
-bs4
-pytz
+Flask==2.0.3
+geopy==2.4.1
+ip2geotools==0.1.6
+pymongo==4.8.0
+python-dotenv==1.0.1
+pytz==2024.1
+pytz==2019.3
+Requests==2.32.3
+tinytuya==1.15.0
