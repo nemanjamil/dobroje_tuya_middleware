@@ -3,6 +3,7 @@ import sys
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from typing import Dict, Any
+from typing import List
 
 # Add the project directory to the system path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -23,6 +24,13 @@ class SensorDataRequest(BaseModel):
     API_KEY: str = Field(..., description="API key for Tuya", example="9u7uqwsp7u9pxkfmswae")
     API_SECRET: str = Field(..., description="API secret for Tuya", example="5479b5a39e464313911b4a41eb0c7355")
     DEVICE_ID: str = Field(..., description="Device ID of the Tuya device", example="vdevo172072913903404")
+
+class MultiSensorDataRequest(BaseModel):
+    API_REGION: str = Field(..., description="API region for Tuya", example="eu")
+    API_KEY: str = Field(..., description="API key for Tuya", example="9u7uqwsp7u9pxkfmswae")
+    API_SECRET: str = Field(..., description="API secret for Tuya", example="5479b5a39e464313911b4a41eb0c7355")
+    DEVICE_ID: List[str] = Field(..., description="Device IDs of the Tuya devices", example=["vdevo172044590691636", "vdevo172044570814122"])
+
 
 class CommandRequest(BaseModel):
     API_REGION: str = Field(..., description="API region for Tuya", example="eu")
@@ -59,6 +67,33 @@ async def get_sensor_data(request: SensorDataRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/get_multi_sensor_data", summary="Get Sensor Data", description="Retrieve sensor data from Tuya devices")
+async def get_multi_sensor_data(request: MultiSensorDataRequest):
+    try:
+        api_region = request.API_REGION
+        api_key = request.API_KEY
+        api_secret = request.API_SECRET
+        device_ids = request.DEVICE_ID
+
+        all_device_status = {}
+
+        for device_id in device_ids:
+            # Initialize TuyaDeviceManager for each device
+            device = TuyaDeviceManager(api_region, api_key, api_secret, device_id, '154.61.204.255')
+            if device.get_properties()['success']:
+                device_status = device.get_status()
+                if device_status:
+                    all_device_status[device_id] = device_status
+                else:
+                    all_device_status[device_id] = "Can't get the sensors data."
+            else:
+                all_device_status[device_id] = "Can't connect to the device."
+
+        return all_device_status
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
 @app.post("/send_command", summary="Send Command", description="Send a command to a Tuya device")
 async def send_command(request: CommandRequest):
     try:
@@ -72,13 +107,14 @@ async def send_command(request: CommandRequest):
         device = TuyaDeviceManager(api_region, api_key, api_secret, device_id, '154.61.204.255')
         if device.get_properties()['success']:
             if device.send_command(command)['success']:
-                return {"message": "Command has been sent successfully."}
+                return device.get_status()
             else:
                 raise HTTPException(status_code=404, detail="Can't send the command to the device.")
         else:
             raise HTTPException(status_code=500, detail="Can't connect to the device.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 if __name__ == "__main__":
     import uvicorn
