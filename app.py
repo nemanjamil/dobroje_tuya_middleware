@@ -1,11 +1,7 @@
 import os
 import sys
-import threading
-import time
-from datetime import datetime, timedelta
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from dotenv import load_dotenv
 from typing import Dict, Any
 
 # Add the project directory to the system path
@@ -21,12 +17,6 @@ app = FastAPI(
     description="API for interacting with Tuya devices",
     version="1.0.0"
 )
-load_dotenv()
-
-# Retrieve API credentials from environment variables
-API_REGION = os.getenv('API_REGION')
-API_KEY = os.getenv('API_KEY')
-API_SECRET = os.getenv('API_SECRET')
 
 class SensorDataRequest(BaseModel):
     API_REGION: str = Field(..., description="API region for Tuya", example="eu")
