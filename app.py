@@ -16,7 +16,11 @@ from config.settings import *
 from src.tuya_cloud_connect import TuyaDeviceManager
 from src.database import MongoDBClient
 
-app = FastAPI()
+app = FastAPI(
+    title="Tuya Device API",
+    description="API for interacting with Tuya devices",
+    version="1.0.0"
+)
 load_dotenv()
 
 # Retrieve API credentials from environment variables
@@ -25,41 +29,26 @@ API_KEY = os.getenv('API_KEY')
 API_SECRET = os.getenv('API_SECRET')
 
 class SensorDataRequest(BaseModel):
-    API_REGION: str
-    API_KEY: str
-    API_SECRET: str
-    DEVICE_ID: str
+    API_REGION: str = Field(..., description="API region for Tuya", example="eu")
+    API_KEY: str = Field(..., description="API key for Tuya", example="9u7uqwsp7u9pxkfmswae")
+    API_SECRET: str = Field(..., description="API secret for Tuya", example="5479b5a39e464313911b4a41eb0c7355")
+    DEVICE_ID: str = Field(..., description="Device ID of the Tuya device", example="vdevo172072913903404")
 
 class CommandRequest(BaseModel):
-    API_REGION: str
-    API_KEY: str
-    API_SECRET: str
-    DEVICE_ID: str
-    COMMAND: Dict[str, Any]
+    API_REGION: str = Field(..., description="API region for Tuya", example="eu")
+    API_KEY: str = Field(..., description="API key for Tuya", example="x5xq5g4qht5pfvcakdvr")
+    API_SECRET: str = Field(..., description="API secret for Tuya", example="34f89f40acdf4de6ae23e63eef181a16")
+    DEVICE_ID: str = Field(..., description="Device ID of the Tuya device", example="vdevo172044590691636")
+    COMMAND: Dict[str, Any] = Field(..., description="Command to send to the Tuya device", example={
+        "commands": [
+            {
+                "code": "switch",
+                "value": True
+            }
+        ]
+    })
 
-def is_data_changed(db_client, device_id, new_status):
-    try:
-        latest_record = db_client.get_latest_record(device_id)
-        return latest_record['result'] != new_status['result']
-    except Exception as e:
-        print(f"Error checking data change: {e}")
-        return True
-
-def database_update(db_client, device):
-    while True:
-        try:
-            device_status = device.get_status()
-
-            if is_data_changed(db_client, device.device_id, device):
-                db_client.insert_data(device.device_id, device)
-                print(f"Inserted new soil data: {device}")
-
-            time.sleep(1)
-
-        except Exception as e:
-            print(f"Error in database update: {e}")
-
-@app.post("/get_sensor_data")
+@app.post("/get_sensor_data", summary="Get Sensor Data", description="Retrieve sensor data from a Tuya device")
 async def get_sensor_data(request: SensorDataRequest):
     try:
         api_region = request.API_REGION
@@ -80,7 +69,7 @@ async def get_sensor_data(request: SensorDataRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/send_command")
+@app.post("/send_command", summary="Send Command", description="Send a command to a Tuya device")
 async def send_command(request: CommandRequest):
     try:
         api_region = request.API_REGION
