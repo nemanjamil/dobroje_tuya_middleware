@@ -1,0 +1,10 @@
+name: smart_irrigation
+services:
+  - name: smart_irrigation_service
+    ports:
+      - port: 80
+    routes:
+      - name: main
+        path: /
+    docker:
+      image: <your_username>/smart_irrigation:latest
