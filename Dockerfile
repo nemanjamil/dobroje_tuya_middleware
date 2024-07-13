@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY . /code
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 8000
 
 # Define environment variable
 ENV PYTHONUNBUFFERED=1
