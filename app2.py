@@ -209,20 +209,4 @@ if __name__ == "__main__":
 
     db_client = MongoDBClient()
     
-    # Initialize TuyaDeviceManager for each device
-    devices = [
-        TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Irrigation controller']),
-        TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Luminance sensor']),
-        TuyaDeviceManager(API_REGION, API_KEY, API_SECRET, DEVICES['Smart soil sensor'])
-    ]
-
-    # Create threads for concurrent execution of database update for each device
-    threads = []
-    for device in devices:
-        thread = threading.Thread(target=database_update, args=(db_client, device))
-        threads.append(thread)
-        thread.start()
-
-    # Join threads to ensure the main program waits for them to finish
-    for thread in threads:
-        thread.join()
+    uvicorn.run(app, host="0.0.0.0", port=8000)
