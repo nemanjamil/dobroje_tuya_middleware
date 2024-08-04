@@ -1,10 +1,27 @@
 from pymongo import MongoClient
 from config.settings import MONGO_URI, DB_NAME, COLLECTION_NAME
 from datetime import datetime
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from dotenv import load_dotenv
+import json
+import os
+import sys
+
+# Load environment variables from a .env file
+load_dotenv()
+
+# Retrieve API credentials from environment variables
+mongo_user = os.getenv('mongo_user')
+mongo_pass = os.getenv('mongo_pass')
+mongo_cluster = os.getenv('mongo_cluster')
+mongo_options = os.getenv('mongo_options')
 
 class MongoDBClient:
     def __init__(self):
-        self.client = MongoClient(MONGO_URI)
+
+        uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@{mongo_cluster}/{mongo_options}"        # Create a new client and connect to the server
+        self.client = MongoClient(uri, server_api=ServerApi('1'))
         self.db = self.client[DB_NAME]
         self.collection = self.db[COLLECTION_NAME]
 
