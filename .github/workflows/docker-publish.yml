@@ -112,13 +112,13 @@ jobs:
             cd /var/www/tuya-docker
             docker stop tuya_middleware
             docker rm tuya_middleware
-            docker run / 
-            --env WEATHER_API_KEY=6gqMZk48W7uyxPvLlZvbSAIxVxtMU6Ux / 
-            --env API_REGION=eu / 
-            --env API_KEY=x5xq5g4qht5pfvcakdvr / 
-            --env API_SECRET=34f89f40acdf4de6ae23e63eef181a16 / 
-            --env mongo_user=egyptianego17 / 
-            --env mongo_pass=xavi / 
-            --env mongo_cluster=cluster0.jzzmrsw.mongodb.net / 
-            --env mongo_options=?retryWrites=true&w=majority&appName=Cluster0 / 
+            docker run \ 
+            --env WEATHER_API_KEY=6gqMZk48W7uyxPvLlZvbSAIxVxtMU6Ux \
+            --env API_REGION=eu \ 
+            --env API_KEY=x5xq5g4qht5pfvcakdvr \
+            --env API_SECRET=34f89f40acdf4de6ae23e63eef181a16 \
+            --env mongo_user=egyptianego17 \ 
+            --env mongo_pass=xavi \ 
+            --env mongo_cluster=cluster0.jzzmrsw.mongodb.net \
+            --env mongo_options=?retryWrites=true&w=majority&appName=Cluster0 \
             -p 8369:8000 --name tuya_middleware -d ghcr.io/nemanjamil/dobroje_tuya_middleware:main
