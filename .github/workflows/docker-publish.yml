@@ -110,4 +110,6 @@ jobs:
           port: 22
           script: |
             cd /var/www/tuya-docker
+            docker stop tuya_middleware
+            docker rm tuya_middleware
             docker run -p 8369:8000 --name tuya_middleware -d ghcr.io/nemanjamil/dobroje_tuya_middleware:main
