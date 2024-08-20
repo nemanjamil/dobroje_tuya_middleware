@@ -19,7 +19,6 @@ mongo_options = os.getenv('mongo_options')
 
 class MongoDBClient:
     def __init__(self):
-
         uri = f"mongodb+srv://{mongo_user}:{mongo_pass}@{mongo_cluster}/{mongo_options}"        # Create a new client and connect to the server
         self.client = MongoClient(uri, server_api=ServerApi('1'))
         self.db = self.client[DB_NAME]
