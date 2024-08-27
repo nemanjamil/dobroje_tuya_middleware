@@ -19,12 +19,15 @@ from src.database import MongoDBClient
 ENV = os.getenv('ENV', 'development')
 
 # Define the API URL based on the environment
-if ENV == 'production':
-    API_URL = "https://dobroje.rs/parametri.php?action=tuyaDevicesList"
-    ENDPOINT_HOST = "dobroje.rs"
-else:
-    API_URL = "http://localhost/parametri.php?action=tuyaDevicesList"
-    ENDPOINT_HOST = "localhost"
+# if ENV == 'production':
+#     API_URL = "https://dobroje.rs/parametri.php?action=tuyaDevicesList"
+#     ENDPOINT_HOST = "dobroje.rs"
+# else:
+#     API_URL = "http://localhost/parametri.php?action=tuyaDevicesList"
+#     ENDPOINT_HOST = "localhost"
+
+API_URL = "https://dobroje.rs/parametri.php?action=tuyaDevicesList"
+ENDPOINT_HOST = "dobroje.rs"
 
 def is_data_changed(db_client, device_id, new_status):
     """
