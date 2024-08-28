@@ -6,7 +6,7 @@ This project provides an API for interacting with Tuya devices, enabling you to 
 
 - Retrieve sensor data from Tuya devices.
 - Send commands to Tuya devices.
-- Detailed Swagger documentation for API exploration and testing.
+- Detailed Swagger documentation for API exploration.
 
 ## Requirements
 
